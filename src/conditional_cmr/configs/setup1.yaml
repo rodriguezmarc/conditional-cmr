@@ -1,0 +1,21 @@
+# Setup 1 - Fine-tuned SD (paper Table I, column "Fine-tuned SD"; thesis Setup 1).
+# Values selected by the thesis search (§6.2, Fig. 8 and Fig. 12).
+name: fine_tuned_sd
+techniques:
+  train_text_encoder: false
+  metadata_free_cfg: false          # uses the negative prompt "blurry, noisy, artifacts"
+  inverse_frequency_sampling: false
+  contrastive_batching: false
+training:
+  unet_learning_rate: 5.0e-6
+  text_encoder_learning_rate: 1.0e-7  # unused: the text encoder is frozen
+  gradient_accumulation_steps: 4
+  metadata_dropout_probability: 0.15
+  inverse_frequency_max_weight: 2.0   # unused: no inverse-frequency sampling
+inference:
+  num_inference_steps: 40
+  guidance_scale: 3.0
+search:
+  training:
+    unet_learning_rate: [5.0e-6, 1.0e-5, 2.0e-5]
+    gradient_accumulation_steps: [1, 2, 4]

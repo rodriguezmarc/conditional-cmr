@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "conditional-cmr"
+version: 1.0.0
+license: Apache-2.0
+authors:
+  - family-names: Rodríguez
+    given-names: Marc
+preferred-citation:
+  type: conference-paper
+  title: "Metadata-Aware Adaptation of a Generative Foundation Model for Conditional CMR Synthesis"
+  authors:
+    - family-names: Rodríguez
+      given-names: Marc
+    - family-names: Skorupko
+      given-names: Grzegorz
+    - family-names: Aung
+      given-names: Nay
+    - family-names: Petersen
+      given-names: Steffen E.
+    - family-names: Lekadir
+      given-names: Karim
+    - family-names: Gkontra
+      given-names: Polyxeni
+  conference:
+    name: "International Symposium on Medical Information Processing and Analysis (SIPAIM)"
+  year: 2026

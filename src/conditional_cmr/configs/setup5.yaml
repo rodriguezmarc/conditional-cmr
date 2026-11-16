@@ -1,0 +1,20 @@
+# Setup 5 - MF-CFG + IFS + CB (paper Table I, column "MF-CFG+IFS+CB"; thesis Setup 3).
+# Values selected by the thesis search (§6.4, Fig. 24 and Fig. 28).
+name: metadata_free_cfg_inverse_frequency_sampling_contrastive_batching
+techniques:
+  train_text_encoder: true
+  metadata_free_cfg: true
+  inverse_frequency_sampling: true
+  contrastive_batching: true
+training:
+  unet_learning_rate: 5.0e-6
+  text_encoder_learning_rate: 1.0e-7
+  gradient_accumulation_steps: 4
+  metadata_dropout_probability: 0.15
+  inverse_frequency_max_weight: 2.0
+inference:
+  num_inference_steps: 40
+  guidance_scale: 3.0
+search:
+  training:
+    inverse_frequency_max_weight: [1.0, 1.25, 1.5, 1.75, 2.0, 3.0, 5.0, 7.0]

@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conditional-cmr"
+version = "1.0.0"
+description = "Metadata-aware adaptation of a generative foundation model for conditional cardiac MRI synthesis"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Marc Rodríguez" }]
+requires-python = ">=3.10"
+# Versions match the environment used for the paper (torch 2.5.1 + CUDA 12.1).
+# For CUDA wheels install torch first, see README "Installation".
+dependencies = [
+    "torch>=2.5.1",
+    "torchvision>=0.20.1",
+    "diffusers>=0.30",
+    "transformers>=4.44",
+    "accelerate>=0.33",
+    "safetensors>=0.4",
+    "bitsandbytes>=0.43",
+    "numpy>=1.26",
+    "Pillow>=10.0",
+    "PyYAML>=6.0",
+    "tqdm>=4.66",
+    "matplotlib>=3.8",
+    "scipy>=1.11",
+    "torchmetrics>=1.4",
+    "pytorch-fid>=0.3.0",
+    "frd-score>=1.0.1",
+]
+
+[project.optional-dependencies]
+xformers = ["xformers>=0.0.29"]
+
+[project.scripts]
+cmr = "conditional_cmr.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+conditional_cmr = ["configs/*.yaml"]

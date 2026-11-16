@@ -1,0 +1,21 @@
+# Setup 3 - MF-CFG + Inverse-Frequency Sampling (paper Table I, column "MF-CFG+IFS").
+# Run after the thesis as an ablation; hyperparameters were carried over cumulatively
+# from Setup 2, and tau is the value selected for the combined setup (thesis Fig. 24).
+name: metadata_free_cfg_inverse_frequency_sampling
+techniques:
+  train_text_encoder: true
+  metadata_free_cfg: true
+  inverse_frequency_sampling: true
+  contrastive_batching: false
+training:
+  unet_learning_rate: 5.0e-6
+  text_encoder_learning_rate: 1.0e-7
+  gradient_accumulation_steps: 4
+  metadata_dropout_probability: 0.15
+  inverse_frequency_max_weight: 2.0
+inference:
+  num_inference_steps: 40
+  guidance_scale: 4.0
+search:
+  training:
+    inverse_frequency_max_weight: [1.0, 1.25, 1.5, 1.75, 2.0, 3.0, 5.0, 7.0]

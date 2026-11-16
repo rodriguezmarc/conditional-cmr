@@ -1,0 +1,21 @@
+# Setup 2 - Metadata-Free CFG (paper Table I, column "MF-CFG"; thesis Setup 2).
+# Values selected by the thesis search (§6.3, Fig. 16 and Fig. 20).
+name: metadata_free_cfg
+techniques:
+  train_text_encoder: true
+  metadata_free_cfg: true
+  inverse_frequency_sampling: false
+  contrastive_batching: false
+training:
+  unet_learning_rate: 5.0e-6
+  text_encoder_learning_rate: 1.0e-7
+  gradient_accumulation_steps: 4
+  metadata_dropout_probability: 0.15
+  inverse_frequency_max_weight: 2.0   # unused: no inverse-frequency sampling
+inference:
+  num_inference_steps: 40
+  guidance_scale: 4.0
+search:
+  training:
+    text_encoder_learning_rate: [5.0e-8, 1.0e-7, 2.0e-7]
+    metadata_dropout_probability: [0.05, 0.10, 0.15, 0.20]
